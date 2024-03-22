@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+class ComplexNumber {
+private:
+    double realPart;
+    double imaginaryPart;
+
+public:
+    ComplexNumber() {
+        realPart = 0.0;
+        imaginaryPart = 0.0;
+    }
+
+    ComplexNumber(double real, double imaginary) {
+        realPart = real;
+        imaginaryPart = imaginary;
+    }
+
+    ~ComplexNumber() {
+        cout << "Объект уничтожен" << endl;
+    }
+
+    double calculateModulus() {
+        return sqrt(realPart * realPart + imaginaryPart * imaginaryPart);
+    }
+
+    ComplexNumber findComplexConjugate() {
+        return ComplexNumber(realPart, -imaginaryPart);
+    }
+
+    string getInfo() {
+        stringstream ss;
+        ss << realPart << " + " << imaginaryPart << "i";
+        return ss.str();
+    }
+};
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    ComplexNumber constantComplex(3.0, 4.0);
+    cout << "Постоянное комплексное число: " << constantComplex.getInfo() << endl;
+    cout << "Модуль постоянного комплексного числа: " << constantComplex.calculateModulus() << endl;
+    ComplexNumber conjugateComplex = constantComplex.findComplexConjugate();
+    cout << "Сопряженное комплексное число: " << conjugateComplex.getInfo() << endl;
+
+    double inputReal, inputImaginary;
+    cout << "Введите действительную часть комплексного числа: ";
+    cin >> inputReal;
+    cout << "Введите мнимую часть комплексного числа: ";
+    cin >> inputImaginary;
+
+    ComplexNumber inputComplex(inputReal, inputImaginary);
+    cout << "Комплексное число, введенное пользователем: " << inputComplex.getInfo() << endl;
+    cout << "Модуль комплексного числа, введенного пользователем: " << inputComplex.calculateModulus() << endl;
+    ComplexNumber inputConjugateComplex = inputComplex.findComplexConjugate();
+    cout << "Сопряженное комплексное число, введенное пользователем: " << inputConjugateComplex.getInfo() << endl;
+    return 0;
+}
