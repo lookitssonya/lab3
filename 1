@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+class Trapeze {
+private:
+    int base1;
+    int base2;
+
+public:
+    Trapeze(int b1, int b2) : base1(b1), base2(b2) {}
+    
+    string getInfo() {
+        
+        stringstream ss;
+        ss << "Трапеция с основаниями: " << base1 << " и " << base2;
+        return ss.str();
+    }
+
+    int calculateHalfSum() {
+        return (base1 + base2) / 2;
+    }
+};
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int inputBase1, inputBase2;
+    cout << "Введите нижнее основание трапеции: ";
+    cin >> inputBase1;
+    cout << "Введите верхнее основание трапеции: ";
+    cin >> inputBase2;
+
+    Trapeze trapezeObject(inputBase1, inputBase2);
+    cout << trapezeObject.getInfo() << endl;
+    cout << "Полусумма оснований трапеции: " << trapezeOb-ject.calculateHalfSum() << endl;
+
+    return 0;
+}
